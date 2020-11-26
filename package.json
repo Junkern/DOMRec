@@ -1,0 +1,26 @@
+{
+  "name": "domrec",
+  "version": "0.0.1",
+  "description": "Base package for recording and replaying DOM updates on web pages",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Junkern/DOMRec.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Junkern/DOMRec/issues"
+  },
+  "homepage": "https://github.com/Junkern/DOMRec#readme",
+  "devDependencies": {
+    "ts-loader": "^8.0.11",
+    "typescript": "^4.1.2",
+    "webpack": "^5.7.0",
+    "webpack-cli": "^4.2.0"
+  }
+}
