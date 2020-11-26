@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <head>
 <meta charset="UTF-8">
-<script src="domrec.js"></script>
+<script src="../dist/recording.js"></script>
 <body>
 <p><button id="record">Start recording</button> <button id="stop">Stop recording</button>
 <div id="content" style="background:yellow">
@@ -17,7 +17,7 @@ document.getElementById("action").addEventListener("click", function() {
   document.getElementById("content").appendChild(v);
 });
 document.getElementById("record").addEventListener("click", function() {
-  window.recorder = new DOMRec(document.getElementById("content"));
+  window.recorder = new DOMRecorder(document.getElementById("content"));
 });
 document.getElementById("stop").addEventListener("click", function() {
   let contents = window.recorder.stop();
