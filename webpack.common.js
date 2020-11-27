@@ -5,7 +5,6 @@ module.exports = {
     recording: './src/recording/index.ts',
     replay: './src/replay/index.ts'
   },
-  devtool: 'inline-source-map',
   module: {
     rules: [
       {
