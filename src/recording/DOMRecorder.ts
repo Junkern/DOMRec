@@ -22,12 +22,25 @@ export class DOMRecorder {
   public focusedElement = null;
   public observerCallback = this.callback.bind(this);
   public observer: IntersectionObserver;
+  private stylesheets: string[] = []
 
   constructor(public node: any) {
     this.rootFrame = new DOMRecFrame(window, node, this, null);
     this.evaluateFocus();
     this.rootFrame.initialState[1] = this.rootFrame.initialState[1].concat(this.actions);
     this.actions = [];
+    this.collectStylesheets()
+  }
+
+  private collectStylesheets() {
+    const linkElements = document.getElementsByTagName('link')
+    for (let element of Array.from(linkElements)) {
+      if (element.rel && element.rel === 'stylesheet') {
+        if (element.href) {
+          this.stylesheets.push(element.href)
+        }
+      }
+    }
   }
 
   public iframeLoadedListener = (event): void => this.iframeLoaded(event.target, this.actions);
@@ -91,6 +104,7 @@ export class DOMRecorder {
     const height = this.rootFrame.node.getBoundingClientRect().height;
     const ret = {
       initialState: this.rootFrame.initialState,
+      stylesheets: this.stylesheets,
       actions: this.actions,
       width,
       height
