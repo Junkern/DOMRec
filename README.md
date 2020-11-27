@@ -64,3 +64,12 @@ window.demoMovie = {/* the JSON data of the recording must be placed here*/}
 * Open the `demo/record-demo.html` in the browser and start recording.
 * Paste the finished recording below the `//// Paste your demo data text here.` inside `demo/replay-demo.html` and simply open `demo/replay-demo.html` 
 
+## Data Structures
+
+The recording produces an object with the following properties:
+
+* `initialState`: The initial state of the DOM when starting to record
+* `actions`: The DOM changes
+* `stylesheets`: The (external) stylesheets of the website when the recording started
+* `height`: The height of the initial root node
+* `width`: The width of the initial root node
