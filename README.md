@@ -4,6 +4,13 @@ DOMRec records and replays DOM updates to make lightweight, pixel-perfect screen
 
 This project is only possible due to the awesome groundwork by https://github.com/rocallahan in https://github.com/Pernosco/DOMRec. See his article: [DOM Recording For Web Application Demos](https://robert.ocallahan.org/2020/11/dom-recording-for-web-application-demos.html).
 
+## Ecosystem
+
+The ability to record the DOM of a website makes this package very flexible and allows many other possibilites. There are a few tools that already built up on this:
+
+* [Puppeteer](https://github.com/Junkern/domrec-puppeteer): Record the DOM when using puppeteer (also works in headless mode)
+* [Firefox Extension](https://github.com/Junkern/domrec-firefox-extension): A small extension which allows you to easily use `domrec-core` to record DOM changes of any website.
+
 ## Installation
 
 ```sh
