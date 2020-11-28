@@ -23,6 +23,7 @@ export class DOMRecorder {
   public observerCallback = this.callback.bind(this);
   public observer: IntersectionObserver;
   private stylesheets: string[] = []
+  private iFrameStylesheets: {[k: string]: string} = {}
 
   constructor(public node: any) {
     this.rootFrame = new DOMRecFrame(window, node, this, null);
@@ -105,6 +106,7 @@ export class DOMRecorder {
     const ret = {
       initialState: this.rootFrame.initialState,
       stylesheets: this.stylesheets,
+      iframeStylesheets: this.iFrameStylesheets,
       actions: this.actions,
       width,
       height
@@ -263,16 +265,18 @@ export class DOMRecorder {
         bodyElement.c.push(this.serializeNode(c, e.DOMRecInner.initialState[1]));
         this.deleteAllDOMRecIDs(c);
       } else if (c.tagName === 'LINK' && c.getAttribute('rel') === 'stylesheet') {
-        let href = c.getAttribute('href');
+        const href = c.getAttribute('href');
         const lastSlash = href.lastIndexOf('/');
+        let key = href
         if (lastSlash >= 0) {
-          href = href.substring(lastSlash + 1);
+          key = href.substring(lastSlash + 1);
         }
         const style = {
           '': 'STYLE',
-          a: { cached: href },
+          a: { cached: key },
           id: this.nextID++
         };
+        this.iFrameStylesheets[key] = href
         bodyElement.c.push(style);
       }
     }
