@@ -8,7 +8,8 @@ This project is only possible due to the awesome groundwork by https://github.co
 
 The ability to record the DOM of a website makes this package very flexible and allows many other possibilites. There are a few tools that already built up on this:
 
-* [Puppeteer](https://github.com/Junkern/domrec-puppeteer): Record the DOM when using puppeteer (also works in headless mode)
+* [Puppeteer](https://github.com/Junkern/domrec-puppeteer): Record the DOM when using puppeteer. This makes it perfect for E2E tests, as it also works in headless mode, 
+* [Playwright](https://github.com/Junkern/domrec-playwright): Record the DOM when using playwright. This makes it perfect for E2E tests, as it also works in headless mode, 
 * [Firefox Extension](https://github.com/Junkern/domrec-firefox-extension): A small extension which allows you to easily use `domrec-core` to record DOM changes of any website.
 
 ## Installation
