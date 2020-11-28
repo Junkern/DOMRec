@@ -35,9 +35,11 @@ To start a recording, you have to pass an HTML node to the `DOMRecorder` class. 
 
 Example which only records everything inside a div with the id `content`: 
 
-```js
+```html
 <script src="./dist/recording.js"></script>
+<script>
 window.recorder = new DOMRecorder(document.getElementById("content"));
+</script>
 ```
 
 In most cases you want to start recording after the `DOMContentLoaded` event has fired.
@@ -51,11 +53,23 @@ document.body.textContent = JSON.stringify(contents);
 
 ### Replaying
 
-```js
+Use the `DOMReplayManager` to setup and init the replay of a recording. You have to pass two parameters:
+
+* first parameter: The node you want to play the recording inside
+* second parameter: A stored recording
+
+```html
 <script src="./dist/replay.js"></script>
-window.demoMovie = {/* the JSON data of the recording must be placed here*/}
-<div class="DOMRecMovie" id="demoMovie" style=""></div>
+<div id="replayContainer" style=""></div>
+<script>
+  const recording = contents // the stored contents object from the recording above
+  const m = new DOMReplayManager(document.getElementById('replayContainer'), recording)
+  m.addReplayStylesheet('./domrec-replay.css')
+  m.init()
+</script>
 ```
+
+In most cases you want to add the `demo/domrec-replay.css` file with the `addReplayStylesheet` function, otherwise it will look really bad. Try it out ;)
 
 ## Demo
 
@@ -72,5 +86,6 @@ The recording produces an object with the following properties:
 * `initialState`: The initial state of the DOM when starting to record
 * `actions`: The DOM changes
 * `stylesheets`: The (external) stylesheets of the website when the recording started
+* `iframeStylesheets`: Contains the URL of stylesheets of iframes encountered during recording.
 * `height`: The height of the initial root node
 * `width`: The width of the initial root node
