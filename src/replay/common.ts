@@ -16,4 +16,13 @@ function setTitle(d) {
   }
 }
 
-export {setTitle}
+interface Recording {
+  stylesheets: string[]
+  initialState: any[]
+  iframeStylesheets: { [k: string]: string }
+  actions: any[]
+  width: number
+  height: number
+}
+
+export {setTitle, Recording}

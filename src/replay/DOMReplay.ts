@@ -1,5 +1,5 @@
 import { DOMREC_ADD, DOMREC_ATTR, DOMREC_CANVAS_DATA, DOMREC_DELAY, DOMREC_FORCE_STYLE_FLUSH, DOMREC_FRAME, DOMREC_INPUT, DOMREC_LABEL, DOMREC_MOUSE_DOWN, DOMREC_MOUSE_MOVE, DOMREC_MOUSE_UP, DOMREC_REMOVE, DOMREC_SCROLL, DOMREC_TEXT } from './../constants'
-import { setTitle } from './common'
+import { Recording, setTitle } from './common'
 
 export class DOMReplay {
   public initialState: any
@@ -14,18 +14,16 @@ export class DOMReplay {
   public scaleY: number
   public nodes: Record<string, any>
   public cursor: HTMLDivElement
-  public DOMRecStylesheetCache: any = (window as any).DOMRecStylesheetCache;
   public pendingTimeout: any = null;
   public caretElement: any = null;
   public maybeFocusedElement: any = null;
   public maybeFocusedElementChanged = false;
 
-  constructor(hostElem: any) {
-    let state = window[hostElem.id] as any
-    this.initialState = state.initialState
-    this.actions = state.actions
-    this.width = state.width
-    this.height = state.height
+  constructor(hostElem: any, private state: Recording, private DOMRecStylesheetCache: { [k: string]: string }) {
+    this.initialState = this.state.initialState
+    this.actions = this.state.actions
+    this.width = this.state.width
+    this.height = this.state.height
     this.hostElem = hostElem
     const hostFrame = hostElem.lastChild
     this.hostDoc = hostFrame.contentDocument
