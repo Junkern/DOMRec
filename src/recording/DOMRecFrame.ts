@@ -13,7 +13,6 @@ export class DOMRecFrame {
   public initialState: any[];
 
   constructor(public win: Window, public node: any, public rec: any, public iframeElement: any) {
-    console.log('rec', rec)
     node.ownerDocument.DOMRecInner = this;
 
     const actions = [];
