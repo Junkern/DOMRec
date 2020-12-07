@@ -71,6 +71,8 @@ Use the `DOMReplayManager` to setup and init the replay of a recording. You have
 
 In most cases you want to add the `demo/domrec-replay.css` file with the `addReplayStylesheet` function, otherwise it will look really bad. Try it out ;)
 
+For now it is only possible to replay one recording. It is planned to support the replay of multiple recordings one after another. If you need that feature, please open an issue.
+
 ## Demo
 
 * Download this repository
